@@ -18,6 +18,10 @@ export default (sequelize, DataTypes) => {
                 isIn: [['admin', 'user']],
             },
             defaultValue: 'user',
+        },
+        isVerified: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         }
     })
     return User;
