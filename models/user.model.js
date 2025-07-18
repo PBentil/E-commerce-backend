@@ -24,5 +24,11 @@ export default (sequelize, DataTypes) => {
             defaultValue: false,
         }
     })
+    User.associate = (models) => {
+        User.hasOne(models.Store, {
+            as: 'store',
+            foreignKey: 'OwnerId',
+        })
+    }
     return User;
 }
