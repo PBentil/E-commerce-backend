@@ -110,12 +110,12 @@ export const registerCustomer = async (req, res) => {
 
 
 export const verifyEmail = async (req, res) => {
-    const { Token }= req.query;
+    const { token }= req.query;
 
     try{
-        if(!Token) res.status(400).json({message : "Token is required!"});
+        if(!token) res.status(400).json({message : "Token is required!"});
 
-        const decoded = jwt.verify(Token, process.env.JWT_TOKEN);
+        const decoded = jwt.verify(token, process.env.JWT_TOKEN);
         const user = await User.findByPk( decoded.id );
 
         if(!user) return res.status(400).json({message:"User does not exist"});
