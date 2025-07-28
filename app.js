@@ -5,6 +5,7 @@ import testRoute from "./routes/test.route.js";
 import profileRoutes from "./routes/profile.routes.js"
 import adminRoutes from "./routes/admin.routes.js"
 import cors from "cors";
+import categoryRoutes from "./routes/category.routes.js";
 
 
 const app = express();
@@ -21,8 +22,9 @@ app.get("/", (req, res) => {
 })
 app.use('/api/auth', authRoutes );
 app.use('/api/test', testRoute );
-app.use('/api', profileRoutes)
-app.use('/api/admin', adminRoutes)
+app.use('/api', profileRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/categories', categoryRoutes);
 
 
 export default app;
