@@ -1,4 +1,4 @@
-import db from '../models/index.js';
+import db from '../../models/index.js';
 
 
 const { Category, Product } = db;
@@ -46,3 +46,25 @@ export const GetSpecificCategory = async (req, res) => {
         return res.status(500).json({ message: "something went wrong" });
     }
 }
+
+
+export const createCategory = async (req, res) => {
+    const { categoryName, slug } = req.body;
+
+    if (!categoryName || !slug) {
+        return res.status(400).json({ message: "categoryName and slug are required" });
+    }
+
+    try {
+        const existing = await Category.findOne({ where: { slug } });
+        if (existing) {
+            return res.status(409).json({ message: "Category with this slug already exists" });
+        }
+
+        const category = await Category.create({ categoryName, slug });
+        return res.status(201).json({ message: "Category created successfully", category });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Something went wrong" });
+    }
+};

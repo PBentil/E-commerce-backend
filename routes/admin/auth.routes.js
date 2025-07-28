@@ -6,7 +6,7 @@ import {
     verifyEmail,
     logoutUser,
     requestResetPassword, resetPassword
-} from "../controller/auth.controller.js";
+} from "../../controller/admin/auth.controller.js";
 
 
 

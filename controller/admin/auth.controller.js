@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import db from "../models/index.js";
-import {sendEmail} from "../utils/mailer.js";
+import db from "../../models/index.js";
+import {sendEmail} from "../../utils/mailer.js";
 
 const { User , Store } = db;
 
