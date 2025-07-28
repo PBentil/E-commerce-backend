@@ -11,11 +11,20 @@ export default (sequelize, DataTypes) => {
                 isIn: [['pending', 'paid', 'shipped', 'delivered', 'canceled']],
             },
         },
+    }, {
+        timestamps: true,
+        tableName: "order",
     });
 
     Order.associate = (models) => {
-        Order.belongsTo(models.User);
-        Order.hasMany(models.OrderItem);
+        Order.belongsTo(models.User, {
+            foreignKey: "userId",
+            as: "user",
+        });
+        Order.hasMany(models.OrderItem, {
+            foreignKey: "orderId",
+            as: "items",
+        });
     };
 
     return Order;

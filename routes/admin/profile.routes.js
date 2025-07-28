@@ -4,8 +4,8 @@ import {
     editProfile,
     getAdminProfile,
     getUserProfile
-} from "../controller/profile.controller.js";
-import {protect, restrictTo} from "../middleware/auth.middleware.js";
+} from "../../controller/admin/profile.controller.js";
+import {protect, restrictTo} from "../../middleware/auth.middleware.js";
 import express from "express";
 
 const router = express.Router();
