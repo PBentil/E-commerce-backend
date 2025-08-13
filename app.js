@@ -7,6 +7,7 @@ import adminRoutes from "./routes/admin/admin.routes.js"
 import cors from "cors";
 import categoryRoutes from "./routes/admin/category.routes.js";
 import cartRoutes from "./routes/customer/cart.routes.js";
+import checkoutRoutes from "./routes/customer/checkout.routes.js";
 
 
 const app = express();
@@ -28,6 +29,7 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/', adminRoutes);
 app.use('/api/cart', cartRoutes);
+app.use('/api/order', checkoutRoutes);
 
 
 export default app;
