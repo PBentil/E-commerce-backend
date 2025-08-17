@@ -8,6 +8,7 @@ import cors from "cors";
 import categoryRoutes from "./routes/admin/category.routes.js";
 import cartRoutes from "./routes/customer/cart.routes.js";
 import checkoutRoutes from "./routes/customer/checkout.routes.js";
+import allProductsRoutes from "./routes/allProducts.routes.js";
 
 
 const app = express();
@@ -19,9 +20,7 @@ app.use(cors({
     credentials: true
 }));
 
-app.get("/", (req, res) => {
-    res.send("api is working!");
-})
+app.use('/api', allProductsRoutes)
 app.use('/api/auth', authRoutes );
 app.use('/api/test', testRoute );
 app.use('/api', profileRoutes);
