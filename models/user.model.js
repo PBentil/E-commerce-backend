@@ -18,7 +18,17 @@ export default (sequelize, DataTypes) => {
                 isIn: [['admin', 'user']],
             },
             defaultValue: 'user',
+        },
+        isVerified: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
         }
     })
+    User.associate = (models) => {
+        User.hasOne(models.Store, {
+            as: 'store',
+            foreignKey: 'OwnerId',
+        })
+    }
     return User;
 }
